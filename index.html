@@ -73,8 +73,9 @@
     .promo a{text-decoration:underline;font-weight:700}
     .hero{min-height:853px;background:var(--navy-2) url("images/hero-image.png") center/cover no-repeat;color:#fff;position:relative;overflow:hidden}
     /* mesmo container das demais seções — a borda esquerda do hero alinha com o resto da página */
-    .hero .container{position:relative;z-index:2;min-height:853px;display:flex;align-items:flex-start;padding-top:148px}
+    .hero .container{position:relative;z-index:2;min-height:853px;display:flex;align-items:flex-start;padding-top:58px}
     .hero-copy{width:min(600px,52%)}
+    .hero-logo{width:149px;height:auto;margin-bottom:20px}
     .hero h1{max-width:100%;text-shadow:0 5px 57px rgba(0,0,0,.25);margin-bottom:29px}
     .hero .copy{width:566px;max-width:100%;font-size:18px;line-height:1.76;color:rgba(245,244,247,.77);margin-bottom:29px}
     .hero .copy strong{color:#fff}
@@ -229,7 +230,7 @@
     .reveal.in{opacity:1;transform:none}
 
     @media(max-width:1050px){
-      .hero{background-position:62% center}.hero .container{padding-top:105px}.hero-copy{width:min(600px,56%)}.hero .cta{font-size:13px}
+      .hero{background-position:62% center}.hero .container{padding-top:42px}.hero-copy{width:min(600px,56%)}.hero-logo{width:130px;margin-bottom:18px}.hero .cta{font-size:13px}
       .pain-grid,.problem-grid,.value-grid,.guarantee-grid{grid-template-columns:1fr;gap:55px}
       .pain-title h2,.value h3{max-width:22ch}
       .problem-grid{width:min(calc(100% - (var(--gutter) * 2)),760px)}
@@ -244,7 +245,7 @@
       .promo{height:auto;min-height:44px;font-size:11px}
       .hero{min-height:820px;background-position:69% bottom;background-size:auto 820px}
       .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,49,.94) 0%,rgba(10,7,49,.78) 52%,rgba(10,7,49,.05) 100%);z-index:1}
-      .hero .container{min-height:820px;align-items:flex-start;padding-top:80px}.hero-copy{width:88%;padding:0}.hero .copy{font-size:14px;line-height:1.55}.hero .cta{width:auto;font-size:10px}.hero-br{display:none}.hero-wave{height:60px}
+      .hero .container{min-height:820px;align-items:flex-start;padding-top:28px}.hero-copy{width:88%;padding:0}.hero-logo{width:112px;margin-bottom:14px}.hero .copy{font-size:14px;line-height:1.55}.hero .cta{width:auto;font-size:10px}.hero-br{display:none}.hero-wave{height:60px}
       .cta{font-size:10px;min-height:60px;padding:14px 18px;gap:10px}.cta img{width:27px;height:27px;flex-basis:27px}
       .pain{padding-top:70px}.insight{border-width:6px;border-radius:30px;padding-inline:24px}.insight-br{display:none}.fear-cards{grid-template-columns:1fr}.fear-cards li{min-height:170px;text-align:left}.fear-icon{margin-bottom:24px}
       .problem{padding-top:80px}.problem-grid{grid-template-columns:1fr}.side-note{padding-left:24px}
@@ -273,6 +274,7 @@
     <section class="hero" id="topo">
       <div class="container">
         <div class="hero-copy reveal">
+          <img class="hero-logo" src="images/logo-manual-do-corte.svg" alt="Manual do Corte">
           <h1>Torne-se uma <span class="accent">Especialista</span><br class="hero-br">
             <span class="accent">em Corte de Cabelos Crespos e</span><br class="hero-br">
             <span class="accent">Cacheados</span> e execute qualquer<br class="hero-br">
