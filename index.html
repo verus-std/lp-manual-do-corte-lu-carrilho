@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manual do Corte — Lu Carrilho</title>
+  <meta name="description" content="Domine os 5 Fundamentos do Corte Crespo e Cacheado e execute qualquer corte com confiança, precisão e segurança.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#171337;
+      --navy-2:#0a0731;
+      --navy-3:#2c2564;
+      --pink-bg:#ffeff9;
+      --pink:#fdceec;
+      --pink-card:#e7c4d9;
+      --lilac:#dcdbff;
+      --ink:#171337;
+      --line:rgba(23,19,55,.16);
+      --line-light:rgba(220,219,255,.12);
+      --serif:"Playfair Display",Georgia,serif;
+      --accent:"Fraunces",Georgia,serif;
+      --sans:"Manrope",Arial,sans-serif;
+      --wrap:1380px;
+      --gutter:clamp(22px,5.8vw,112px);
+      --section:clamp(76px,8vw,150px);
+      --ease:cubic-bezier(.22,1,.36,1);
+
+      /* Escala de títulos — ancorada no teto da H1 do hero (47.8px).
+         Nada na página pode ser maior que --t-h1, exceto o preço final. */
+      --t-h1:clamp(34px,3.05vw,47.8px);
+      --t-h2:clamp(30px,2.75vw,43px);
+      --t-h3:clamp(24px,2.05vw,31px);
+      --t-h4:clamp(18px,1.4vw,21px);
+      --t-num:clamp(28px,2.5vw,38px);
+      --t-lead:1.08;
+      --t-track:-.035em;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{margin:0;background:var(--pink-bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    p,h1,h2,h3,h4,ul{margin:0}
+    ul{padding:0;list-style:none}
+    strong{font-weight:700}
+    button,summary{font:inherit}
+    .container{width:min(calc(100% - (var(--gutter) * 2)),var(--wrap));margin-inline:auto}
+    .container-sm{width:min(calc(100% - (var(--gutter) * 2)),1072px);margin-inline:auto}
+    .light{background:var(--pink-bg);color:var(--ink)}
+    .dark{background:var(--navy);color:var(--lilac)}
+    .eyebrow{font-size:11px;line-height:1.4;letter-spacing:.2em;text-transform:uppercase;color:#655f8d;margin-bottom:26px}
+    /* Uma única família para todos os títulos: Playfair Display, a mesma da H1 do hero.
+       Fraunces fica reservada para citações e para a camada de preços. */
+    h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:var(--t-track);line-height:var(--t-lead)}
+    h1{font-size:var(--t-h1)}
+    h2{font-size:var(--t-h2)}
+    h3{font-size:var(--t-h3)}
+    h4{font-size:var(--t-h4)}
+    .accent{font-style:italic;color:var(--pink)}
+    .dark .accent{color:var(--pink)}
+    .copy{font-size:clamp(15px,1.15vw,20px);line-height:1.65}
+    .display-copy{font-family:var(--accent);font-size:clamp(22px,1.8vw,31px);font-weight:300;line-height:1.32}
+    .center{text-align:center}
+    .wave{display:block;width:calc(100% + 2px);height:clamp(75px,8.7vw,167px);margin-inline:-1px;object-fit:fill;position:relative;z-index:3}
+    .wave-dark-to-light{background:var(--navy);margin-top:-1px}
+    .wave.overlap-top{margin-top:calc(clamp(75px,8.7vw,167px) * -1)}
+
+    .promo{height:54px;background:var(--pink);display:grid;place-items:center;font-size:14px;color:var(--navy);position:relative;z-index:5;text-align:center;padding:0 18px}
+    .promo a{text-decoration:underline;font-weight:700}
+    .hero{min-height:853px;background:var(--navy-2) url("images/hero-image.png") center/cover no-repeat;color:#fff;position:relative;overflow:hidden}
+    /* mesmo container das demais seções — a borda esquerda do hero alinha com o resto da página */
+    .hero .container{position:relative;z-index:2;min-height:853px;display:flex;align-items:flex-start;padding-top:148px}
+    .hero-copy{width:min(600px,52%)}
+    .hero h1{max-width:100%;text-shadow:0 5px 57px rgba(0,0,0,.25);margin-bottom:29px}
+    .hero .copy{width:566px;max-width:100%;font-size:18px;line-height:1.76;color:rgba(245,244,247,.77);margin-bottom:29px}
+    .hero .copy strong{color:#fff}
+    .hero .cta{width:480px;max-width:100%;padding:14px 16px;gap:12px;font-size:16px;white-space:nowrap}
+    .hero-br{display:block}
+    .hero-wave{position:absolute;bottom:-1px;left:0;width:100%;height:102px;z-index:3}
+    .cta{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:70px;padding:18px 24px;border-radius:999px;background:var(--pink);color:var(--navy-2);border:2px solid var(--navy);box-shadow:0 4px 8px rgba(0,0,0,.2);font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1.35;text-transform:uppercase;text-align:center;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(23,19,55,.2)}
+    .cta img{width:32px;height:32px;flex:0 0 32px}
+    .cta-wide{width:100%;font-size:13px;padding:24px 30px;background:linear-gradient(105deg,#fdceec,#e4b4d6,#dcdbff);border:0;box-shadow:0 18px 28px rgba(253,206,236,.3)}
+
+    .pain{padding:88px 0 126px}
+    .pain-grid{display:grid;grid-template-columns:minmax(0,549px) minmax(0,671px);gap:clamp(72px,8.5vw,160px);align-items:start}
+    .pain-title h2{max-width:none}
+    .number-list{border-top:1px solid var(--line)}
+    .number-list li{display:grid;grid-template-columns:52px 1fr;gap:25px;padding:25px 0;border-bottom:1px solid var(--line);font-size:clamp(16px,1.12vw,21px);line-height:1.65}
+    .number-list b{font-family:var(--serif);color:#77719c;font-size:18px}
+    .insight{margin-top:100px;background:var(--navy);color:var(--lilac);border:10px solid var(--lilac);border-radius:54px;box-shadow:0 4px 30px rgba(0,0,0,.2);padding:clamp(58px,6vw,94px) clamp(34px,7vw,140px) clamp(46px,5vw,74px);text-align:center;position:relative;overflow:hidden}
+    .insight h3{max-width:24ch;margin:0 auto 14px}
+    .insight-br{display:block}
+    .insight .sub{font-size:14px;margin-bottom:26px}
+    /* linha de clímax da seção — no teto da escala, nunca acima da H1 */
+    .insight .big{font-family:var(--serif);font-size:var(--t-h1);line-height:var(--t-lead);letter-spacing:var(--t-track);max-width:22ch;margin:0 auto 28px}
+    .insight .label{font-size:clamp(17px,1.7vw,31px);letter-spacing:.06em;text-transform:uppercase;margin-bottom:26px}
+    .sparkles{position:absolute;width:88px;opacity:.9}
+    .sparkles.left{left:9%;top:10%}.sparkles.right{right:9%;top:11%;transform:scaleX(-1)}
+    .fear-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .fear-cards li{min-height:210px;background:linear-gradient(145deg,#f1d2e5 0%,var(--pink-card) 100%);color:var(--navy);border:1px solid rgba(220,219,255,.3);border-radius:22px;box-shadow:0 16px 30px rgba(6,4,37,.18);padding:24px 26px;text-align:left;font-family:var(--serif);font-size:clamp(21px,1.55vw,30px);line-height:1.08;letter-spacing:-.045em;display:flex;flex-direction:column;justify-content:space-between;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+    .fear-cards li:hover{transform:translateY(-5px);box-shadow:0 22px 38px rgba(6,4,37,.26)}
+    .fear-icon{width:50px;height:50px;border-radius:15px;background:var(--navy);display:grid;place-items:center;box-shadow:0 7px 18px rgba(23,19,55,.2)}
+    .fear-icon img{width:25px;height:25px}
+    .fear-text{display:block;max-width:14ch}
+
+    .problem{padding:var(--section) 0 0}
+    .problem-grid{display:grid;grid-template-columns:452px 1fr;gap:clamp(70px,9vw,150px);width:min(calc(100% - (var(--gutter) * 2)),1136px);margin:0 auto 84px}
+    .problem h3{margin-bottom:24px}.problem .display-copy{margin-bottom:32px}
+    .quotes{display:grid;gap:14px;margin-top:28px}
+    .quotes li{border-left:1px solid var(--navy);padding:10px 26px;font-family:var(--accent);font-style:italic;font-size:22px;color:rgba(23,19,55,.64)}
+    .explain-list li{display:flex;gap:18px;align-items:flex-start;padding:18px 4px;border-bottom:1px solid rgba(23,19,55,.38);font-size:17px}
+    .check{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:rgba(23,19,55,.09);display:grid;place-items:center;margin-top:1px}
+    .check img{width:11px;height:11px}
+    .side-note{border-left:1px solid var(--navy);padding-left:42px;margin-top:44px;font-size:18px;line-height:1.9}
+    .mission{background:var(--navy);color:var(--lilac);padding:clamp(72px,8vw,145px) 0 clamp(190px,18vw,300px);text-align:center}
+    .mission h2{max-width:24ch;margin:0 auto 42px}
+    .mission-br{display:block}
+    .mission .mission-lead{font-size:clamp(19px,1.8vw,31px);line-height:1.32;letter-spacing:.05em;text-transform:uppercase;max-width:25ch;margin:0 auto 20px}
+    .mission .copy{max-width:922px;margin:0 auto 42px}
+    .intro-card-wrap{background:var(--pink-bg);padding-bottom:92px}
+    .intro-card{width:min(calc(100% - (var(--gutter) * 2)),1448px);min-height:620px;margin:-155px auto 0;border:10px solid var(--lilac);border-radius:56px;background:radial-gradient(circle at 50% 0,#625ea8,#080733 85%);box-shadow:0 4px 36px rgba(0,0,0,.25);position:relative;z-index:4;padding:76px clamp(56px,7vw,112px);color:var(--lilac)}
+    .intro-card-content{position:relative;z-index:2;width:39%;max-width:440px}
+    .intro-card h3{margin-bottom:28px}
+    .intro-card .copy{max-width:410px;font-size:18px}
+    .photo-a,.photo-b{position:absolute;object-fit:cover;border:9px solid var(--lilac);box-shadow:0 4px 24px rgba(0,0,0,.22)}
+    .photo-a{width:35%;height:76%;right:18%;top:-7%;border-radius:48px 48px 0 48px}
+    .photo-b{width:23%;height:63%;right:7%;bottom:-8%;border-radius:48px 48px 48px 0}
+
+    .capabilities{padding:70px 0 105px}
+    .capabilities h2{max-width:18ch;margin:0 auto 68px;text-align:center}
+    .cap-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+    .cap-card{grid-column:span 2;min-height:225px;padding:34px 36px;border-radius:24px;color:#fff;background:linear-gradient(172deg,var(--navy-3),var(--navy));box-shadow:inset 0 0 0 1px rgba(220,219,255,.14)}
+    .cap-card:nth-child(4),.cap-card:nth-child(5){grid-column:span 3;min-height:200px}
+    .cap-icon{width:54px;height:54px;border-radius:50%;background:rgba(228,180,214,.06);display:grid;place-items:center;margin-bottom:22px}
+    .cap-icon img{width:24px;height:24px}
+    .cap-card p{color:rgba(245,244,247,.8);font-size:16.5px;line-height:1.55;max-width:31ch}
+    .cap-card strong{color:#fff}
+    .cap-after{max-width:560px;margin:70px auto 0;text-align:center;font-size:18px;line-height:1.65}
+    .cap-after .method{display:block;font-size:clamp(19px,1.7vw,31px);line-height:1.3;letter-spacing:.05em;text-transform:uppercase;margin-top:46px}
+    .cap-after .cta{margin-top:36px}
+
+    .training{padding:82px 0 0;text-align:center}
+    .training h2{max-width:16ch;margin:0 auto 24px}
+    .training-br{display:block}
+    .training .copy{max-width:760px;margin:0 auto 70px}
+    .proof-strip{display:grid;grid-template-columns:repeat(5,minmax(260px,1fr));gap:22px;width:calc(100% + 260px);margin-left:-130px;overflow:hidden}
+    .proof-slot{height:510px;border-radius:20px;background:var(--pink-card);overflow:hidden}
+    .proof-slot img{width:100%;height:100%;object-fit:cover}
+    .bonus-block{padding:120px 0 130px}
+    .bonus-block h2{max-width:24ch;margin:0 auto 15px}
+    .bonus-block>.container-sm>.copy{max-width:640px;margin:0 auto 45px;color:var(--lilac)}
+    .bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:left}
+    .bonus-card{padding:34px 36px;border-radius:24px;background:linear-gradient(170deg,var(--navy-3),var(--navy));box-shadow:inset 0 0 0 1px rgba(220,219,255,.14)}
+    .bonus-tag{font-size:10px;font-weight:700;letter-spacing:.24em;color:#e4b4d6;text-transform:uppercase}
+    .bonus-card h3{font-style:italic;margin:14px 0 10px;color:#fff}
+    .bonus-card p{font-size:15px;line-height:1.65;color:rgba(245,244,247,.65)}
+    .result-card{background:var(--pink-card);border:6px solid var(--navy);border-radius:29px;color:var(--navy);display:grid;grid-template-columns:1.2fr .8fr;gap:50px;text-align:left;margin-top:44px;padding:38px 46px;box-shadow:0 54px 60px rgba(0,0,0,.24)}
+    .result-card h2{margin:0;text-align:left}.result-card .copy{margin-top:12px}
+    .result-list .explain-list li{padding:12px 4px;border-bottom:1px solid rgba(24,20,55,.1)}
+    .result-card .cta{position:absolute;left:50%;transform:translateX(-50%);bottom:-35px}
+    .result-card{position:relative}
+
+    .value{padding:120px 0 80px}
+    .value-grid{display:grid;grid-template-columns:440px minmax(0,787px);gap:80px;align-items:start}
+    .value h3{max-width:none}
+    .value-list{border-top:1px solid var(--line)}
+    .value-list li{display:grid;grid-template-columns:1fr auto;gap:30px;padding:25px 0;border-bottom:1px solid rgba(23,19,55,.1);align-items:start}
+    .value-list h4{margin-bottom:6px}
+    .value-list p{font-size:14px;color:rgba(23,19,55,.5)}
+    .value-list .price{font-family:var(--accent);font-size:26px}
+    .value-total{font-family:var(--accent);display:flex;align-items:baseline;justify-content:space-between;padding-top:28px;font-size:22px}
+    .value-total strong{font-size:var(--t-num);font-weight:300;line-height:1.1}
+    .principle-wrap{padding:40px 0 0}
+    .principle{background:var(--navy);color:var(--lilac);border:10px solid var(--lilac);border-radius:54px;box-shadow:0 4px 30px rgba(0,0,0,.2);padding:74px 10% 90px;position:relative}
+    .principle h3{max-width:30ch;margin-bottom:18px}.principle .copy{max-width:670px}
+    .principle hr{border:0;height:1px;width:204px;background:var(--lilac);margin:70px auto 48px}
+    .principle h2{text-align:center;max-width:19ch;margin:0 auto 34px}
+    .principle .goal{text-align:center;font-size:clamp(18px,1.7vw,31px);line-height:1.35;letter-spacing:.05em;text-transform:uppercase;max-width:28ch;margin:0 auto 38px}
+    .principle .sparkles{right:8%;top:7%}
+    .offer-dark{padding:190px 0 150px;margin-top:-108px;text-align:center}
+    .recap-title{max-width:22ch;margin:0 auto 50px}
+    .recap{display:grid;grid-template-columns:repeat(2,1fr);gap:0 44px;text-align:left;margin-bottom:38px}
+    .recap li{display:flex;gap:15px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line-light);font-size:15px;color:rgba(245,244,247,.82)}
+    .bonus-recap-title{text-align:left;font-family:var(--serif);font-size:var(--t-h3);line-height:var(--t-lead);letter-spacing:var(--t-track);margin:32px 0 24px;color:#fff}
+    .bonus-recap li{color:var(--pink)}
+    .price-box{width:min(732px,100%);margin:70px auto 0;padding:72px 68px;border-radius:34px;background:linear-gradient(157deg,rgba(104,100,172,.55),rgba(10,7,49,.76));box-shadow:0 50px 100px -50px #06041f,inset 0 0 0 1px rgba(220,219,255,.2);backdrop-filter:blur(20px)}
+    .price-box h3{max-width:32ch;margin:0 auto 38px;color:rgba(245,244,247,.84)}
+    .ledger li{display:flex;align-items:baseline;gap:12px;padding:13px 0;font-size:15px;color:rgba(245,244,247,.8)}
+    .ledger .dots{flex:1;border-bottom:1px dashed rgba(220,219,255,.3)}
+    .ledger .vl{font-family:var(--accent);color:var(--lilac)}
+    .price-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line-light);padding-top:24px;margin-top:10px;font-family:var(--accent);font-size:22px}
+    .price-total strong{font-size:var(--t-num);font-weight:300;line-height:1.1;color:var(--pink)}
+    .price-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(220,219,255,.25),transparent);margin:54px 0 32px}
+    .price-muted{color:rgba(245,244,247,.5);margin-bottom:12px}
+    .price-reason{color:rgba(245,244,247,.64);margin-bottom:34px}
+    .price-main-label{font-family:var(--accent);font-size:27px;color:rgba(245,244,247,.82);margin-bottom:8px}
+    .price-main{font-family:var(--accent);font-size:clamp(55px,6vw,86px);line-height:1;background:linear-gradient(100deg,#f5f4f7,var(--pink),var(--lilac));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hotmart{display:inline-block;margin:14px auto 22px;padding:8px 16px;border-radius:999px;background:rgba(228,180,214,.1);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#e4b4d6}
+    .cash{font-family:var(--accent);font-size:33px;font-style:italic;color:rgba(245,244,247,.8);margin-bottom:36px}
+    .perks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:42px}
+    .perks li{padding:10px 17px;border-radius:999px;background:rgba(220,219,255,.06);font-size:12px;color:rgba(245,244,247,.8)}
+
+    .guarantee{padding:60px 0 110px}
+    .guarantee-grid{display:grid;grid-template-columns:440px 1fr;gap:55px;align-items:center;width:min(calc(100% - (var(--gutter) * 2)),var(--wrap));margin:auto}
+    .guarantee-seal{width:445px;max-width:100%;aspect-ratio:445/442}
+    .guarantee-seal img{display:block;width:100%;height:100%;object-fit:contain}
+    .guarantee-copy h2{max-width:21ch;margin-bottom:28px}
+    .guarantee-copy .copy{max-width:580px;line-height:1.45}
+    .mini-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+    .mini-pills span{background:var(--navy);color:var(--lilac);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}
+    .faq-section{padding:70px 0 110px}
+    .faq-section h2{text-align:center;margin-bottom:60px}
+    .faq{width:min(732px,100%);margin:auto;border-top:1px solid var(--line-light)}
+    details{border-bottom:1px solid var(--line-light)}
+    summary{list-style:none;cursor:pointer;padding:24px 50px 24px 0;position:relative;font-family:var(--serif);font-size:var(--t-h4);line-height:var(--t-lead);letter-spacing:var(--t-track);color:#f5f4f7}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"";position:absolute;right:5px;top:50%;width:13px;height:13px;transform:translateY(-50%);background:linear-gradient(var(--pink-card),var(--pink-card)) center/13px 2px no-repeat,linear-gradient(var(--pink-card),var(--pink-card)) center/2px 13px no-repeat;transition:transform .3s}
+    details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+    .answer{padding:0 70px 28px 0;color:rgba(245,244,247,.68)}
+    .answer p{margin:0 0 10px}.answer .yes{font-family:var(--accent);font-style:italic;font-size:19px;color:var(--pink)}
+    .faq-cta{text-align:center;margin-top:58px}
+    footer{background:var(--pink-bg);color:#000;text-align:center;padding:34px var(--gutter);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+    .reveal.in{opacity:1;transform:none}
+
+    @media(max-width:1050px){
+      .hero{background-position:62% center}.hero .container{padding-top:105px}.hero-copy{width:min(600px,56%)}.hero .cta{font-size:13px}
+      .pain-grid,.problem-grid,.value-grid,.guarantee-grid{grid-template-columns:1fr;gap:55px}
+      .pain-title h2,.value h3{max-width:22ch}
+      .problem-grid{width:min(calc(100% - (var(--gutter) * 2)),760px)}
+      .intro-card{min-height:600px;padding:64px 7%}.intro-card-content{width:45%;max-width:400px}.photo-a{right:12%;width:40%}.photo-b{right:3%;width:27%}
+      .cap-grid{grid-template-columns:repeat(2,1fr)}.cap-card,.cap-card:nth-child(4){grid-column:span 1}.cap-card:nth-child(5){grid-column:span 2}
+      .proof-strip{grid-template-columns:repeat(5,240px)}
+      .value-grid{width:min(calc(100% - (var(--gutter) * 2)),800px);margin:auto}
+      .guarantee-grid{max-width:760px;text-align:center}.guarantee-seal{width:min(400px,75vw);margin:auto}.guarantee-copy h2,.guarantee-copy .copy{margin-left:auto;margin-right:auto}.mini-pills{justify-content:center}
+    }
+    @media(max-width:760px){
+      :root{--gutter:22px}
+      .promo{height:auto;min-height:44px;font-size:11px}
+      .hero{min-height:820px;background-position:69% bottom;background-size:auto 820px}
+      .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,49,.94) 0%,rgba(10,7,49,.78) 52%,rgba(10,7,49,.05) 100%);z-index:1}
+      .hero .container{min-height:820px;align-items:flex-start;padding-top:80px}.hero-copy{width:88%;padding:0}.hero .copy{font-size:14px;line-height:1.55}.hero .cta{width:auto;font-size:10px}.hero-br{display:none}.hero-wave{height:60px}
+      .cta{font-size:10px;min-height:60px;padding:14px 18px;gap:10px}.cta img{width:27px;height:27px;flex-basis:27px}
+      .pain{padding-top:70px}.insight{border-width:6px;border-radius:30px;padding-inline:24px}.insight-br{display:none}.fear-cards{grid-template-columns:1fr}.fear-cards li{min-height:170px;text-align:left}.fear-icon{margin-bottom:24px}
+      .problem{padding-top:80px}.problem-grid{grid-template-columns:1fr}.side-note{padding-left:24px}
+      .mission{padding-top:80px;padding-bottom:160px}.mission-br{display:none}.mission .mission-lead{font-size:17px}
+      .intro-card{margin-top:-110px;padding:52px 30px 340px;min-height:680px;border-width:6px;border-radius:34px}.intro-card-content{width:100%;max-width:none}.photo-a{width:62%;height:300px;right:28%;top:auto;bottom:-3%}.photo-b{width:42%;height:250px;right:2%;bottom:-6%}
+      .capabilities h2{margin-bottom:44px}.cap-grid{grid-template-columns:1fr}.cap-card,.cap-card:nth-child(4),.cap-card:nth-child(5){grid-column:span 1}
+      .proof-strip{grid-template-columns:repeat(5,190px);gap:14px;width:calc(100% + 100px);margin-left:-50px}.proof-slot{height:360px}
+      .training-br{display:none}.bonus-grid{grid-template-columns:1fr}.result-card{grid-template-columns:1fr;padding:32px 26px}.result-card .cta{width:90%}
+      .value{padding-top:90px}.principle{border-width:6px;border-radius:30px;padding:56px 26px}.principle .copy{text-align:left}.principle .goal{font-size:17px}
+      .offer-dark{padding-top:150px}.recap{grid-template-columns:1fr}.price-box{padding:52px 24px}.price-total{flex-direction:column;align-items:center}.price-muted{font-size:14px}.price-main-label{font-size:22px}.perks{gap:7px}.cta-wide{font-size:10px}
+      .guarantee{padding-top:40px}.guarantee-copy .copy{text-align:left}summary{padding-right:40px}.answer{padding-right:20px}
+    }
+    @media(max-width:480px){
+      .hero{background-position:67% bottom}.hero-copy{width:94%}.hero .copy{max-width:88%}
+      .number-list li{grid-template-columns:36px 1fr;gap:12px}.sparkles{display:none}
+      .intro-card{padding-bottom:300px}.photo-a{height:260px}.photo-b{height:210px}
+      .result-card .cta{font-size:9px}.ledger li{font-size:13px}.cash{font-size:28px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="promo"><span><a href="#oferta">Clique aqui</a> e garanta o Manual do Corte por uma Oferta Especial</span></div>
+
+  <main>
+    <section class="hero" id="topo">
+      <div class="container">
+        <div class="hero-copy reveal">
+          <h1>Torne-se uma <span class="accent">Especialista</span><br class="hero-br">
+            <span class="accent">em Corte de Cabelos Crespos e</span><br class="hero-br">
+            <span class="accent">Cacheados</span> e execute qualquer<br class="hero-br">
+            corte com confiança, precisão<br class="hero-br">
+            e segurança.</h1>
+          <p class="copy">Descubra como dominar <strong>os 5 Fundamentos do Corte</strong> — ângulos, posição correta das mãos, posição da tesoura, compensação do fator encolhimento e design de corte — para transformar qualquer corte em um processo simples, previsível e profissional, fazendo suas clientes voltarem e indicarem o seu trabalho.</p>
+          <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
+        </div>
+      </div>
+      <img class="hero-wave" src="images/figma/curve-hero.svg" alt="">
+    </section>
+
+    <section class="light pain">
+      <div class="container">
+        <div class="pain-grid">
+          <div class="pain-title reveal">
+            <p class="eyebrow">Talvez isso soe familiar</p>
+            <h2>Se você trabalha com cabelos crespos e cacheados, provavelmente já passou por pelo menos uma dessas situações...</h2>
+          </div>
+          <ol class="number-list reveal">
+            <li><b>01</b><span>Fica insegura quando uma cliente de cabelo crespo senta na cadeira.</span></li>
+            <li><b>02</b><span>Faz o corte torcendo para o resultado ficar bom.</span></li>
+            <li><b>03</b><span>Nunca sabe exatamente quanto o cabelo vai encolher.</span></li>
+            <li><b>04</b><span>Vê outras profissionais fazendo cortes incríveis e pensa: “Por que o meu nunca fica igual?”</span></li>
+            <li><b>05</b><span>Tem medo de tirar mais do que deveria.</span></li>
+            <li><b>06</b><span>Não consegue cobrar mais porque ainda não confia totalmente no próprio trabalho.</span></li>
+            <li><b>07</b><span>Evita aceitar alguns tipos de cabelo por receio de errar.</span></li>
+            <li><b>08</b><span>Termina o corte pensando: “Poderia ter ficado muito melhor...”</span></li>
+          </ol>
+        </div>
+
+        <div class="insight reveal">
+          <img class="sparkles left" src="images/figma/sparkle-a.svg" alt="">
+          <img class="sparkles right" src="images/figma/sparkle-a.svg" alt="">
+          <h3>E o pior... Você começa a<br class="insight-br"> acreditar que o problema é<br class="insight-br"> falta de talento.</h3>
+          <p class="sub">Ou que ainda precisa fazer mais um curso para finalmente se sentir preparada. <strong>Mas a verdade é outra.</strong></p>
+          <p class="big">Você nunca aprendeu aquilo que realmente sustenta qualquer corte profissional.</p>
+          <p class="label">Sem dominar os fundamentos...</p>
+          <ul class="fear-cards">
+            <li><span class="fear-icon"><img src="images/figma/icon-design.svg" alt=""></span><span class="fear-text">Cada cliente vira uma nova tentativa.</span></li>
+            <li><span class="fear-icon"><img src="images/figma/icon-scissors.svg" alt=""></span><span class="fear-text">Cada corte gera insegurança.</span></li>
+            <li><span class="fear-icon"><img src="images/figma/icon-safety.svg" alt=""></span><span class="fear-text">E cada atendimento aumenta o medo.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="light problem">
+      <div class="problem-grid">
+        <div class="reveal">
+          <h3>O problema não é a técnica.</h3>
+          <p class="display-copy">O problema é que ninguém ensinou os <em>fundamentos</em> que fazem qualquer corte funcionar.</p>
+          <p>A maioria dos cursos ensina apenas:</p>
+          <ul class="quotes"><li>“Faça esse corte.”</li><li>“Copie esse passo a passo.”</li></ul>
+        </div>
+        <div class="reveal">
+          <p>Mas ninguém explica:</p>
+          <ul class="explain-list">
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Por que aquele ângulo foi utilizado.</li>
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Como o cabelo vai reagir depois que secar.</li>
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Como compensar corretamente o fator encolhimento.</li>
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Qual a posição correta das mãos.</li>
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Como posicionar a tesoura para ganhar precisão.</li>
+            <li><span class="check"><img src="images/figma/icon-check-dark.svg" alt=""></span>Como construir um design de corte que valorize cada formato de rosto.</li>
+          </ul>
+          <div class="side-note">É exatamente por isso que tantas profissionais continuam inseguras.<br>Elas decoram cortes.<br>Mas não entendem o motivo de cada movimento.<br>E quando aparece um cabelo diferente...<br>Tudo trava.</div>
+        </div>
+      </div>
+
+      <img class="wave" src="images/figma/curve-pink-to-dark.svg" alt="">
+      <div class="mission">
+        <div class="container reveal">
+          <h2>Foi exatamente para resolver<br class="mission-br"> esse problema que nasceu o<br class="mission-br"> <strong>Manual do Corte</strong></h2>
+          <p class="mission-lead">Um treinamento direto ao ponto que ensina os <strong><u>5 Fundamentos do Corte Crespo e Cacheado.</u></strong></p>
+          <p class="copy">Depois que você domina esses fundamentos...<br>Você deixa de decorar técnicas.<br>E passa a entender o corte.<br>É isso que separa uma cabeleireira comum de uma especialista.<br>Mesmo que hoje você ainda tenha medo de errar.</p>
+          <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
+        </div>
+      </div>
+      <img class="wave wave-dark-to-light" src="images/figma/curve-dark-to-pink.svg" alt="">
+      <div class="intro-card-wrap">
+        <article class="intro-card reveal">
+          <div class="intro-card-content">
+            <h3>Antes de aprender dezenas de cortes...</h3>
+            <p class="copy">Você precisa dominar aquilo que faz TODOS eles funcionarem.<br><br>Os 5 Fundamentos do Manual do Corte vão ensinar você a enxergar o cabelo de uma forma completamente diferente.</p>
+          </div>
+          <img class="photo-a" src="images/figma/photo-pair.png" alt="Mulheres com cabelos crespos e cacheados">
+          <img class="photo-b" src="images/figma/photo-portrait.png" alt="Mulher com cabelo cacheado">
+        </article>
+      </div>
+    </section>
+
+    <section class="light capabilities">
+      <div class="container-sm">
+        <h2 class="reveal">Depois desse treinamento você será capaz de entender:</h2>
+        <div class="cap-grid reveal">
+          <article class="cap-card"><span class="cap-icon"><img src="images/figma/icon-angle.svg" alt=""></span><p>Como escolher o <strong>ângulo correto</strong> para cada objetivo.</p></article>
+          <article class="cap-card"><span class="cap-icon"><img src="images/figma/icon-shrink.svg" alt=""></span><p>Como controlar o <strong>fator encolhimento</strong> antes mesmo de iniciar o corte.</p></article>
+          <article class="cap-card"><span class="cap-icon"><img src="images/figma/icon-scissors.svg" alt=""></span><p>Como <strong>posicionar mãos e tesoura</strong> para ganhar precisão.</p></article>
+          <article class="cap-card"><span class="cap-icon"><img src="images/figma/icon-design.svg" alt=""></span><p>Como criar um <strong>design de corte equilibrado.</strong></p></article>
+          <article class="cap-card"><span class="cap-icon"><img src="images/figma/icon-safety.svg" alt=""></span><p>Como executar qualquer corte com muito <strong>mais segurança.</strong></p></article>
+        </div>
+        <div class="cap-after reveal">Quando isso acontece...<br>Você para de trabalhar no improviso.<br>Para de cortar “no achismo”.<br>E finalmente começa a atender suas clientes sabendo exatamente o que está fazendo.
+          <span class="method">Porque uma especialista <strong>não depende da sorte. Ela depende do método.</strong></span>
+          <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
+        </div>
+      </div>
+    </section>
+
+    <img class="wave" src="images/figma/curve-pink-to-dark.svg" alt="">
+    <section class="dark training">
+      <div class="container-sm reveal">
+        <h2>Ao entrar para o<br class="training-br"> <strong>Manual do Corte,</strong></h2>
+        <p class="copy">você terá <strong>acesso imediato</strong> ao método que ensina os fundamentos por trás de qualquer corte em cabelos crespos e cacheados. Você não vai aprender apenas a copiar cortes. Você vai entender o motivo de cada movimento. E é isso que faz uma especialista atender com confiança.</p>
+      </div>
+      <div class="proof-strip reveal" aria-label="Espaço preparado para cinco imagens de resultados">
+        <div class="proof-slot"><!-- opcional: images/resultado-1.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-2.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-3.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-4.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-5.jpg --></div>
+      </div>
+      <div class="bonus-block">
+        <div class="container-sm">
+          <h2 class="reveal">E NÃO PARA POR AÍ...</h2>
+          <p class="copy reveal">Além do Manual do Corte, você ainda recebe três bônus para entregar uma experiência completa para suas clientes.</p>
+          <div class="bonus-grid reveal">
+            <article class="bonus-card"><span class="bonus-tag">Bônus 1</span><h3>Lavagem Correta</h3><p>Aprenda como preparar corretamente o cabelo antes do corte para potencializar o resultado final.</p></article>
+            <article class="bonus-card"><span class="bonus-tag">Bônus 2</span><h3>Fitagem</h3><p>Mostre para sua cliente o verdadeiro potencial dos cachos através da finalização correta.</p></article>
+            <article class="bonus-card"><span class="bonus-tag">Bônus 3</span><h3>Secagem no Difusor de Mão</h3><p>Aprenda como secar o cabelo preservando definição, formato e volume.</p></article>
+          </div>
+          <article class="result-card reveal">
+            <div><h2>Resultado?</h2><p class="copy">Sua cliente sai do salão apaixonada. E quando ela chega em casa... <strong>O cabelo continua bonito.</strong></p></div>
+            <div class="result-list"><p>Isso aumenta:</p><ul class="explain-list"><li>✓ Indicações.</li><li>✓ Fidelização.</li><li>✓ Autoridade.</li><li>✓ Valor percebido.</li></ul></div>
+            <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <img class="wave wave-dark-to-light" src="images/figma/curve-dark-to-pink.svg" alt="">
+
+    <section class="light value">
+      <div class="container value-grid">
+        <h3 class="reveal">Hoje você recebe acesso completo ao Manual do Corte</h3>
+        <div class="reveal">
+          <ul class="value-list">
+            <li><div><h4>Manual do Corte</h4><p>Domine os cinco fundamentos que sustentam qualquer corte profissional.</p></div><span class="price">R$197</span></li>
+            <li><div><h4>Teoria Completa dos Ângulos</h4></div><span class="price">R$97</span></li>
+            <li><div><h4>Técnicas Práticas de Corte</h4><p>Base Reta · 90° Tipo 3 · 90° Tipo 4 · Chanel de Bico · Tapered Cut · Corte em Camadas</p></div><span class="price">R$297</span></li>
+            <li><div><h4>Bônus — Lavagem Correta</h4></div><span class="price">R$47</span></li>
+            <li><div><h4>Bônus — Fitagem</h4></div><span class="price">R$67</span></li>
+            <li><div><h4>Bônus — Secagem no Difusor</h4></div><span class="price">R$67</span></li>
+          </ul>
+          <div class="value-total"><span>Valor total</span><strong>R$772,00</strong></div>
+        </div>
+      </div>
+
+      <div class="container principle-wrap">
+        <article class="principle reveal">
+          <img class="sparkles" src="images/figma/sparkle-a.svg" alt="">
+          <h3>Se você resolvesse aprender tudo isso separadamente em um <strong>cursinho tradicional...</strong><br>Pagaria facilmente R$1300,00</h3>
+          <p class="copy">Uma mentoria... Cursos presenciais... Especializações...<br>E ainda levaria meses até juntar todo esse conhecimento.<br>Sem contar os erros. As clientes perdidas. A insegurança.<br>E o dinheiro deixado na mesa por não conseguir cobrar o valor que realmente merece.</p>
+          <hr>
+          <h2>Mas o objetivo do Manual do Corte não é cobrar centenas de reais.</h2>
+          <p class="goal">O objetivo é formar mais especialistas em cabelos crespos e cacheados.</p>
+          <div class="center"><a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dark offer-dark" id="oferta">
+      <div class="container-sm">
+        <h2 class="recap-title reveal">Vamos recapitular tudo o que você <em>recebe hoje:</em></h2>
+        <ul class="recap reveal">
+          <li>✓ Manual do Corte</li><li>✓ Teoria Completa sobre Ângulos</li><li>✓ Pega Correta da Tesoura</li><li>✓ Corte Molhado de Base Reta</li><li>✓ Corte a Seco 90° (Tipo 3)</li><li>✓ Corte 90° (Tipo 4)</li><li>✓ Chanel de Bico</li><li>✓ Tapered Cut</li><li>✓ Corte Molhado em Camadas</li>
+        </ul>
+        <p class="bonus-recap-title reveal">Além dos bônus exclusivos:</p>
+        <ul class="recap bonus-recap reveal"><li>✦ Lavagem Correta</li><li>✦ Fitagem</li><li>✦ Secagem Profissional no Difusor de Mão</li></ul>
+
+        <div class="price-box reveal">
+          <h3>Se você fosse comprar cada um desses treinamentos separadamente...</h3>
+          <ul class="ledger">
+            <li><span>Manual do Corte</span><span class="dots"></span><span class="vl">R$197</span></li><li><span>Teoria dos Ângulos</span><span class="dots"></span><span class="vl">R$97</span></li><li><span>Pega Correta da Tesoura</span><span class="dots"></span><span class="vl">R$67</span></li><li><span>Cortes Profissionais</span><span class="dots"></span><span class="vl">R$297</span></li><li><span>Lavagem Correta</span><span class="dots"></span><span class="vl">R$47</span></li><li><span>Fitagem</span><span class="dots"></span><span class="vl">R$67</span></li><li><span>Secagem no Difusor</span><span class="dots"></span><span class="vl">R$67</span></li>
+          </ul>
+          <div class="price-total"><span>Valor Total:</span><strong>De R$839,00</strong></div>
+          <div class="price-divider"></div>
+          <p class="price-muted">Mas hoje você não vai pagar R$839. Nem R$497. Nem R$197.</p>
+          <p class="price-reason">Porque o objetivo é colocar esse método nas mãos do maior número possível de profissionais.</p>
+          <p class="price-main-label">Hoje você recebe acesso imediato por apenas</p>
+          <div class="price-main">12x de R$</div>
+          <span class="hotmart">Ver na Hotmart</span>
+          <p class="cash">ou R$97 à vista</p>
+          <ul class="perks"><li>✓ Pagamento único</li><li>✓ Sem mensalidade</li><li>✓ Acesso imediato</li><li>✓ Atualizações inclusas</li></ul>
+          <a class="cta cta-wide" href="#" data-checkout>Quero dominar o Manual do Corte agora</a>
+        </div>
+      </div>
+    </section>
+    <img class="wave wave-dark-to-light" src="images/figma/curve-dark-to-pink.svg" alt="">
+
+    <section class="light guarantee">
+      <div class="guarantee-grid">
+        <div class="guarantee-seal reveal">
+          <img src="images/7-dias-vetor.svg" alt="Garantia incondicional de 7 dias">
+        </div>
+        <div class="guarantee-copy reveal">
+          <h2>Garantia Incondicional de 7 Dias.</h2>
+          <p class="copy">Você entra hoje. Assiste às aulas. Conhece todo o método. Aplica os ensinamentos. <strong>E se, por qualquer motivo,</strong> acreditar que o Manual do Corte não era o que esperava... Basta solicitar o reembolso dentro de 7 dias. <strong>Você recebe 100% do seu dinheiro de volta.</strong></p>
+          <div class="mini-pills"><span>Sem risco.</span><span>Sem perguntas.</span><span>Sem burocracia.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <img class="wave" src="images/figma/curve-pink-to-dark.svg" alt="">
+    <section class="dark faq-section" id="faq">
+      <div class="container-sm">
+        <h2 class="reveal">Perguntas Frequentes</h2>
+        <div class="faq reveal">
+          <details><summary>O Manual do Corte é para iniciantes?</summary><div class="answer"><p class="yes">Sim.</p><p>O Manual do Corte foi desenvolvido tanto para quem está começando quanto para profissionais que já trabalham com cabelos crespos e cacheados, mas ainda sentem insegurança na hora de cortar.</p><p>Você aprenderá os fundamentos que sustentam qualquer corte, criando uma base sólida para evoluir com confiança.</p></div></details>
+          <details><summary>Eu já fiz outros cursos de corte. Vale a pena?</summary><div class="answer"><p class="yes">Sim.</p><p>A maioria dos cursos ensina apenas a reproduzir técnicas.</p><p>No Manual do Corte, você aprende o que está por trás de qualquer corte: entendimento de ângulos, posição correta das mãos, posição da tesoura, compensação do fator encolhimento e design de corte.</p><p>Depois de dominar esses fundamentos, qualquer técnica se torna muito mais fácil de executar.</p></div></details>
+          <details><summary>Vou conseguir aplicar o conteúdo imediatamente?</summary><div class="answer"><p class="yes">Sim.</p><p>O treinamento foi desenvolvido para ser direto ao ponto.</p><p>Você pode assistir às aulas e começar a aplicar os conceitos já nos seus próximos atendimentos.</p></div></details>
+          <details><summary>Preciso de equipamentos especiais?</summary><div class="answer"><p class="yes">Não.</p><p>Você utilizará os equipamentos que já fazem parte da rotina de um profissional de corte.</p><p>O grande diferencial não está nas ferramentas, mas na forma correta de utilizá-las.</p></div></details>
+          <details><summary>O curso possui aulas práticas?</summary><div class="answer"><p class="yes">Sim.</p><p>Além da parte teórica, você acompanhará a aplicação dos fundamentos em diversos cortes práticos, entendendo exatamente como utilizar cada conceito no dia a dia.</p></div></details>
+          <details><summary>Em quanto tempo recebo acesso?</summary><div class="answer"><p>O acesso é liberado automaticamente após a confirmação do pagamento.</p><p>Em poucos minutos você já poderá começar a assistir às aulas.</p></div></details>
+          <details><summary>As aulas podem ser assistidas pelo celular?</summary><div class="answer"><p class="yes">Sim.</p><p>Você poderá acessar o curso pelo computador, celular ou tablet, estudando de onde e quando quiser.</p></div></details>
+          <details><summary>O pagamento é único?</summary><div class="answer"><p class="yes">Sim.</p><p>Você paga apenas uma vez. Não existe mensalidade nem cobrança recorrente.</p></div></details>
+          <details><summary>E se eu não gostar do curso?</summary><div class="answer"><p>Você terá <strong>7 dias de Garantia Incondicional</strong>.</p><p>Se dentro desse período entender que o Manual do Corte não faz sentido para você, basta solicitar o reembolso e receberá <strong>100% do valor investido de volta.</strong></p><p>Você faz sua matrícula sem nenhum risco.</p></div></details>
+          <details><summary>Esse curso ensina todos os tipos de corte?</summary><div class="answer"><p>O Manual do Corte ensina os fundamentos que estão por trás dos principais cortes para cabelos crespos e cacheados.</p><p>Ao dominar esses fundamentos, você desenvolve a capacidade de executar qualquer corte com muito mais segurança, precisão e confiança.</p></div></details>
+          <details><summary>Vou receber certificado?</summary><div class="answer"><p class="yes">Sim.</p><p>Ao concluir o treinamento, você receberá um certificado de conclusão, comprovando sua participação no Manual do Corte.</p></div></details>
+          <details><summary>“E se eu ainda não me sentir segura para cobrar mais?”</summary><div class="answer"><p><strong>Essa é justamente a proposta do Manual do Corte.</strong></p><p>Quando você entende os fundamentos por trás de qualquer corte, deixa de trabalhar no improviso e passa a atender com muito mais confiança.</p><p>E profissionais confiantes entregam melhores resultados, conquistam mais indicações e conseguem aumentar seus preços de forma natural, porque o valor percebido pelo cliente também aumenta.</p></div></details>
+        </div>
+        <div class="faq-cta reveal"><a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year">2026</span> Lu Carrilho · Manual do Corte · Todos os direitos reservados.</footer>
+  <script>
+    (function(){
+      var year=document.getElementById('year');
+      if(year) year.textContent=new Date().getFullYear();
+      var items=document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){items.forEach(function(item){item.classList.add('in')});return}
+      var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
+      items.forEach(function(item){observer.observe(item)});
+    })();
+  </script>
+</body>
+</html>
