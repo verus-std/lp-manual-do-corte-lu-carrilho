@@ -71,7 +71,8 @@
 
     .promo{height:54px;background:var(--pink);display:grid;place-items:center;font-size:14px;color:var(--navy);position:relative;z-index:5;text-align:center;padding:0 18px}
     .promo a{text-decoration:underline;font-weight:700}
-    .hero{min-height:853px;background:var(--navy-2) url("images/hero-image.png") center/cover no-repeat;color:#fff;position:relative;overflow:hidden}
+    .hero{min-height:853px;background:var(--navy-2) url("images/new-hero.jpg") center/cover no-repeat;color:#fff;position:relative;overflow:hidden}
+    .hero::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:-1px;height:clamp(110px,12vw,210px);pointer-events:none;background:linear-gradient(180deg,rgba(255,239,249,0) 0%,rgba(255,239,249,.16) 30%,rgba(255,239,249,.68) 72%,var(--pink-bg) 100%)}
     /* mesmo container das demais seções — a borda esquerda do hero alinha com o resto da página */
     .hero .container{position:relative;z-index:2;min-height:853px;display:flex;align-items:flex-start;padding-top:58px}
     .hero-copy{width:min(600px,52%)}
@@ -81,11 +82,12 @@
     .hero .copy strong{color:#fff}
     .hero .cta{width:480px;max-width:100%;padding:14px 16px;gap:12px;font-size:16px;white-space:nowrap}
     .hero-br{display:block}
-    .hero-wave{position:absolute;bottom:-1px;left:0;width:100%;height:102px;z-index:3}
-    .cta{display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:70px;padding:18px 24px;border-radius:999px;background:var(--pink);color:var(--navy-2);border:2px solid var(--navy);box-shadow:0 4px 8px rgba(0,0,0,.2);font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1.35;text-transform:uppercase;text-align:center;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-    .cta:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(23,19,55,.2)}
+    .cta{--glow-x:78%;--glow-left-opacity:.12;--glow-right-opacity:.48;--cta-base:linear-gradient(105deg,#fdceec 0%,#efc5df 56%,#dcdbff 100%);display:inline-flex;align-items:center;justify-content:center;gap:18px;min-height:70px;padding:18px 24px;border-radius:999px;position:relative;z-index:1;overflow:visible;color:var(--navy-2);border:2px solid transparent;background:radial-gradient(110px 78px at var(--glow-x) 50%,rgba(255,255,255,.94) 0%,rgba(255,250,235,.58) 34%,rgba(253,206,236,0) 76%) padding-box,var(--cta-base) padding-box,linear-gradient(90deg,rgba(255,255,255,.9),rgba(255,255,255,.15) 46%,rgba(220,219,255,.95)) border-box;box-shadow:0 5px 12px rgba(23,19,55,.2);font-size:12px;font-weight:700;letter-spacing:.06em;line-height:1.35;text-transform:uppercase;text-align:center;transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s var(--ease)}
+    .cta::before{content:"";position:absolute;inset:-7px;border-radius:inherit;z-index:-1;pointer-events:none;background:radial-gradient(circle at 0 50%,rgb(253 206 236 / var(--glow-left-opacity)) 0%,transparent 62%),radial-gradient(circle at 100% 50%,rgb(220 219 255 / var(--glow-right-opacity)) 0%,transparent 62%);filter:blur(13px);opacity:.9;transition:filter .3s ease,opacity .3s ease,transform .3s ease}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(23,19,55,.24);filter:saturate(1.08)}
+    .cta.glow-active::before{filter:blur(17px);opacity:1;transform:scale(1.025)}
     .cta img{width:32px;height:32px;flex:0 0 32px}
-    .cta-wide{width:100%;font-size:13px;padding:24px 30px;background:linear-gradient(105deg,#fdceec,#e4b4d6,#dcdbff);border:0;box-shadow:0 18px 28px rgba(253,206,236,.3)}
+    .cta-wide{--cta-base:linear-gradient(105deg,#fdceec,#e4b4d6,#dcdbff);width:100%;font-size:13px;padding:24px 30px;box-shadow:0 18px 28px rgba(253,206,236,.3)}
 
     .pain{padding:88px 0 126px}
     .pain-grid{display:grid;grid-template-columns:minmax(0,549px) minmax(0,671px);gap:clamp(72px,8.5vw,160px);align-items:start}
@@ -164,6 +166,7 @@
     .result-card h2{margin:0;text-align:left}.result-card .copy{margin-top:12px}
     .result-list .explain-list li{padding:12px 4px;border-bottom:1px solid rgba(24,20,55,.1)}
     .result-card .cta{position:absolute;left:50%;transform:translateX(-50%);bottom:-35px}
+    .result-card .cta:hover{transform:translate(-50%,-3px)}
     .result-card{position:relative}
 
     .value{padding:120px 0 80px}
@@ -245,7 +248,7 @@
       .promo{height:auto;min-height:44px;font-size:11px}
       .hero{min-height:820px;background-position:69% bottom;background-size:auto 820px}
       .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,7,49,.94) 0%,rgba(10,7,49,.78) 52%,rgba(10,7,49,.05) 100%);z-index:1}
-      .hero .container{min-height:820px;align-items:flex-start;padding-top:28px}.hero-copy{width:88%;padding:0}.hero-logo{width:112px;margin-bottom:14px}.hero .copy{font-size:14px;line-height:1.55}.hero .cta{width:auto;font-size:10px}.hero-br{display:none}.hero-wave{height:60px}
+      .hero .container{min-height:820px;align-items:flex-start;padding-top:28px}.hero-copy{width:88%;padding:0}.hero-logo{width:112px;margin-bottom:14px}.hero .copy{font-size:14px;line-height:1.55}.hero .cta{width:auto;font-size:10px}.hero-br{display:none}
       .cta{font-size:10px;min-height:60px;padding:14px 18px;gap:10px}.cta img{width:27px;height:27px;flex-basis:27px}
       .pain{padding-top:70px}.insight{border-width:6px;border-radius:30px;padding-inline:24px}.insight-br{display:none}.fear-cards{grid-template-columns:1fr}.fear-cards li{min-height:170px;text-align:left}.fear-icon{margin-bottom:24px}
       .problem{padding-top:80px}.problem-grid{grid-template-columns:1fr}.side-note{padding-left:24px}
@@ -264,7 +267,7 @@
       .intro-card{padding-bottom:300px}.photo-a{height:260px}.photo-b{height:210px}
       .result-card .cta{font-size:9px}.ledger li{font-size:13px}.cash{font-size:28px}
     }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.cta::before{filter:blur(13px)}}
   </style>
 </head>
 <body>
@@ -284,7 +287,6 @@
           <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
         </div>
       </div>
-      <img class="hero-wave" src="images/figma/curve-hero.svg" alt="">
     </section>
 
     <section class="light pain">
@@ -510,8 +512,32 @@
     (function(){
       var year=document.getElementById('year');
       if(year) year.textContent=new Date().getFullYear();
+      var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduceMotion){
+        var glowTimers=new WeakMap();
+        document.querySelectorAll('.cta').forEach(function(button){
+          button.addEventListener('pointermove',function(event){
+            if(event.pointerType&&event.pointerType!=='mouse'&&event.pointerType!=='pen') return;
+            window.clearTimeout(glowTimers.get(button));
+            var rect=button.getBoundingClientRect();
+            var ratio=Math.min(Math.max((event.clientX-rect.left)/rect.width,0),1);
+            button.style.setProperty('--glow-x',(ratio*100).toFixed(1)+'%');
+            button.style.setProperty('--glow-left-opacity',(.12+(1-ratio)*.46).toFixed(2));
+            button.style.setProperty('--glow-right-opacity',(.12+ratio*.46).toFixed(2));
+            button.classList.add('glow-active');
+          });
+          button.addEventListener('pointerleave',function(){
+            button.classList.remove('glow-active');
+            glowTimers.set(button,window.setTimeout(function(){
+              button.style.setProperty('--glow-x','78%');
+              button.style.setProperty('--glow-left-opacity','.12');
+              button.style.setProperty('--glow-right-opacity','.48');
+            },700));
+          });
+        });
+      }
       var items=document.querySelectorAll('.reveal');
-      if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){items.forEach(function(item){item.classList.add('in')});return}
+      if(!('IntersectionObserver' in window)||reduceMotion){items.forEach(function(item){item.classList.add('in')});return}
       var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:'0px 0px -6% 0px'});
       items.forEach(function(item){observer.observe(item)});
     })();

@@ -15,7 +15,7 @@ lp-manual-do-corte-lu-carrilho/
 
 ## Assets
 
-O hero oficial está em `images/hero-image.png` e o selo vetorial de garantia em `images/7-dias-vetor.svg`. As fotos editoriais, curvas, ícones e demais elementos gráficos do layout estão em `images/figma/`; nenhum deles depende dos links temporários do Figma.
+O hero oficial está em `images/new-hero.jpg` e o selo vetorial de garantia em `images/7-dias-vetor.svg`. As fotos editoriais, curvas, ícones e demais elementos gráficos do layout estão em `images/figma/`; nenhum deles depende dos links temporários do Figma.
 
 A faixa de resultados no meio da página mantém os cinco cartões rosa existentes no layout. Caso as fotos sejam adicionadas depois, use `images/resultado-1.jpg` até `images/resultado-5.jpg` nos blocos `.proof-slot` indicados no `index.html`.
 
