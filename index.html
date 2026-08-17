@@ -262,7 +262,11 @@
       .guarantee{padding-top:40px}.guarantee-copy .copy{text-align:left}summary{padding-right:40px}.answer{padding-right:20px}
     }
     @media(max-width:480px){
-      .hero{background-position:67% bottom}.hero-copy{width:94%}.hero .copy{max-width:88%}
+      .hero{min-height:clamp(1260px,330vw,1290px);background-image:url("images/mobile-hero.webp");background-position:center bottom;background-size:auto 100%}
+      .hero::before{background:linear-gradient(180deg,rgba(10,7,49,.42) 0%,rgba(10,7,49,.18) 38%,rgba(10,7,49,0) 64%,rgba(10,7,49,.08) 100%)}
+      .hero .container{min-height:inherit;padding-top:32px}.hero-copy{width:100%;transform:none!important}.hero-logo{width:116px;margin-bottom:17px}
+      .hero h1{font-size:clamp(29px,8.3vw,34px);line-height:1.06;margin-bottom:22px}.hero .copy{max-width:94%;font-size:13px;line-height:1.55;margin-bottom:0}
+      .hero .cta{position:relative;left:auto;bottom:auto;width:100%;max-width:none;min-height:58px;margin-top:20px;padding:12px;font-size:clamp(7.8px,2.35vw,9.5px);gap:8px}.hero .cta img{width:26px;height:26px;flex-basis:26px}
       .number-list li{grid-template-columns:36px 1fr;gap:12px}.sparkles{display:none}
       .intro-card{padding-bottom:300px}.photo-a{height:260px}.photo-b{height:210px}
       .result-card .cta{font-size:9px}.ledger li{font-size:13px}.cash{font-size:28px}
