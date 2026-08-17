@@ -24,7 +24,6 @@ O favicon vetorial está em `images/favicon.svg`.
 ## Pendências de conteúdo (antes de publicar)
 
 - [ ] **Valor da parcela** — o botão de preço mostra `12x de R$` com o marcador rosa "Ver na Hotmart". Substituir pelo valor real (procure por `class="pend"` no HTML).
-- [ ] **Divergência de valor total** — a Dobra 6 fecha em **R$772,00** e a Dobra 8 em **R$839,00**. Está assim na copy original. Definir qual é o correto.
 - [ ] **Link do checkout** — o botão de compra está com `href="#"` e o atributo `data-checkout`. Trocar pela URL da Hotmart:
   ```bash
   grep -n 'data-checkout' index.html
