@@ -2,6 +2,11 @@
 
 Landing page de vendas do curso **Manual do Corte**, em HTML/CSS/JS puro (arquivo único, sem build e sem dependências).
 
+## Versões
+
+- `index.html` — versão original em produção.
+- `v2.html` — versão editorial refinada, publicada separadamente sem alterar a LP original.
+
 ## Estrutura
 
 ```
