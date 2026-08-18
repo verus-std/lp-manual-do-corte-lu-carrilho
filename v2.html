@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root{
       --navy:#171337;
@@ -478,6 +479,94 @@
       .v2 .hero .cta{position:relative;left:auto;bottom:auto;width:100%;min-height:58px;margin-top:20px;padding:12px;font-size:clamp(7.8px,2.35vw,9.5px);gap:8px}
       .v2 .hero::after{height:110px}
     }
+
+    /* V2 — sistema tipográfico e fundamentos alinhados à linguagem da V3. */
+    body.v2{
+      --serif:"Sora",Arial,sans-serif;
+      --accent:"Sora",Arial,sans-serif;
+      --sans:"Sora",Arial,sans-serif;
+      --t-h1:clamp(31px,2.55vw,41px);
+      --t-h2:clamp(29px,2.35vw,38px);
+      --t-h3:clamp(23px,1.85vw,30px);
+      --t-h4:clamp(17px,1.25vw,20px);
+      --t-num:clamp(27px,2.2vw,35px);
+      --t-lead:1.12;
+      --t-track:-.045em;
+      font-weight:300;
+    }
+    .v2 h1,.v2 h2,.v2 h3,.v2 h4{font-weight:400}
+    .v2 strong,.v2 b{font-weight:500}
+    .v2 .promo a,.v2 .cta,.v2 .bonus-tag,.v2 .hotmart,.v2 .mini-pills span,.v2 footer,.v2 main>section:not(.hero)::before,.v2-ticker span{font-weight:500}
+    .v2 .accent{font-style:normal;font-weight:400;color:#ffafe3}
+    .v2 .light strong{color:#7b356f}
+    .v2 .dark strong,.v2 .hero strong{color:#f3a9d7}
+    .v2 .result-card strong{color:#69305f}
+    .v2 .display-copy,.v2 .insight .big{font-weight:300;letter-spacing:-.04em}
+    .v2 .principle h3,.v2 .price-box>h3{font-style:normal}
+    .v2 .cash{font-style:normal;font-weight:300}
+    .v2 summary{font-family:var(--sans);letter-spacing:-.035em}
+
+    .v2 .hero-copy{width:min(620px,53%)}
+    .v2 .hero-logo{margin-bottom:23px}
+    .v2 .hero h1{font-size:var(--t-h1);line-height:1.08;letter-spacing:-.05em;margin-bottom:22px;max-width:610px}
+    .v2 .hero-title-line{display:block}
+    .v2 .hero-foundations{width:590px;max-width:100%;margin-bottom:22px}
+    .v2 .hero-foundations-lead{max-width:570px;font-size:15px;line-height:1.55;color:rgba(255,255,255,.76);margin-bottom:14px}
+    .v2 .hero-foundations-lead span{color:#ffafe3;font-weight:400}
+    .v2 .hero-foundations-list{display:flex;flex-wrap:wrap;gap:8px}
+    .v2 .hero-foundations-list li{
+      display:flex;align-items:center;gap:8px;min-height:34px;padding:7px 11px;
+      border:1px solid rgba(255,255,255,.18);border-radius:999px;
+      background:rgba(16,10,56,.52);backdrop-filter:blur(7px);
+      color:rgba(255,255,255,.9);font-size:10px;line-height:1.2;letter-spacing:.015em
+    }
+    .v2 .hero-foundations-list img{width:16px;height:16px;object-fit:contain;opacity:.9}
+    .v2 .hero .cta{width:450px;min-width:0;min-height:62px;padding-block:13px;font-size:11px}
+
+    .v2 .pain-title h2,.v2 .mission h2,.v2 .capabilities h2,.v2 .training h2,
+    .v2 .bonus-block h2,.v2 .principle h2,.v2 .recap-title,
+    .v2 .guarantee-copy h2,.v2 .faq-section h2{
+      font-size:var(--t-h2);line-height:var(--t-lead);letter-spacing:var(--t-track)
+    }
+    .v2 .insight h3,.v2 .problem h3,.v2 .intro-card-content h3,
+    .v2 .bonus-card h3,.v2 .value-grid>h3,.v2 .principle h3,.v2 .price-box>h3{
+      font-size:var(--t-h3);line-height:var(--t-lead);letter-spacing:var(--t-track)
+    }
+    .v2 .insight .big{font-size:var(--t-h1);line-height:var(--t-lead)}
+    .v2 .problem .display-copy{font-size:clamp(22px,1.8vw,31px);line-height:1.24}
+    .v2 .quotes li{font-family:var(--sans);font-style:normal;font-size:clamp(18px,1.4vw,22px);letter-spacing:-.03em}
+    .v2 .fear-cards li{font-family:var(--sans);font-size:clamp(19px,1.4vw,26px);line-height:1.18;letter-spacing:-.035em}
+    .v2 .cap-after .method{font-family:var(--sans);font-size:clamp(18px,1.55vw,27px);letter-spacing:.035em}
+    .v2 .price-main{font-family:var(--sans);font-size:clamp(62px,7vw,92px);font-weight:300;letter-spacing:-.055em}
+    .v2 .price-main-label,.v2 .cash,.v2 .value-list .price,.v2 .value-total,.v2 .price-total,.v2 .ledger .vl{font-family:var(--sans)}
+    .v2 summary{font-size:var(--t-h4)}
+
+    @media(max-width:1050px){
+      .v2 .hero-copy{width:min(610px,58%)}
+      .v2 .hero h1{font-size:32px}
+      .v2 .hero-foundations-lead{max-width:400px;font-size:14px}
+      .v2 .hero-foundations-list li{font-size:9px;padding:6px 9px}
+      .v2 .hero .cta{width:430px;font-size:10px}
+    }
+    @media(max-width:760px){
+      .v2 .hero-copy{width:92%}
+      .v2 .hero h1{font-size:clamp(28px,6.7vw,32px);line-height:1.09;margin-bottom:20px}
+      .v2 .hero-foundations{width:100%;max-width:520px;margin-bottom:18px}
+      .v2 .hero-foundations-lead{max-width:92%;font-size:13px;line-height:1.5;margin-bottom:12px}
+      .v2 .hero-foundations-list{gap:6px}
+      .v2 .hero-foundations-list li{min-height:31px;font-size:9px;padding:6px 9px}
+      .v2 .hero-foundations-list img{width:14px;height:14px}
+      .v2 .hero .cta{width:min(100%,430px);min-height:58px;font-size:9px}
+    }
+    @media(max-width:520px){
+      .v2 .hero-copy{width:100%}
+      .v2 .hero h1{font-size:clamp(24px,6.7vw,27px);line-height:1.1;margin-bottom:19px}
+      .v2 .hero-foundations{max-width:100%}
+      .v2 .hero-foundations-lead{max-width:96%;font-size:12px;line-height:1.5}
+      .v2 .hero-foundations-list{max-width:96%}
+      .v2 .hero-foundations-list li{min-height:29px;font-size:8.5px;padding:6px 8px}
+      .v2 .hero .cta{width:96%;margin-top:18px;padding:11px;font-size:clamp(7.6px,2.25vw,9px);gap:8px}
+    }
     @media(prefers-reduced-motion:reduce){.v2-ticker-track{animation:none}}
   </style>
 </head>
@@ -489,12 +578,24 @@
       <div class="container">
         <div class="hero-copy reveal">
           <img class="hero-logo" src="images/logo-manual-do-corte.svg" alt="Manual do Corte">
-          <h1>Torne-se uma <span class="accent">Especialista</span><br class="hero-br">
-            <span class="accent">em Corte de Cabelos Crespos e</span><br class="hero-br">
-            <span class="accent">Cacheados</span> e execute qualquer<br class="hero-br">
-            corte com confiança, precisão<br class="hero-br">
-            e segurança.</h1>
-          <p class="copy">Descubra como dominar <strong>os 5 Fundamentos do Corte</strong> — ângulos, posição correta das mãos, posição da tesoura, compensação do fator encolhimento e design de corte — para transformar qualquer corte em um processo simples, previsível e profissional, fazendo suas clientes voltarem e indicarem o seu trabalho.</p>
+          <h1>
+            <span class="hero-title-line">Torne-se uma <span class="accent">Especialista</span></span>
+            <span class="hero-title-line accent">em Corte de Cabelos</span>
+            <span class="hero-title-line accent">Crespos e Cacheados</span>
+            <span class="hero-title-line">e execute qualquer corte</span>
+            <span class="hero-title-line">com confiança, precisão</span>
+            <span class="hero-title-line">e segurança.</span>
+          </h1>
+          <div class="hero-foundations">
+            <p class="hero-foundations-lead">Descubra como dominar os <span>5 fundamentos do corte</span> para transformar qualquer corte em um processo simples e previsível.</p>
+            <ul class="hero-foundations-list" aria-label="Os cinco fundamentos do corte">
+              <li><img src="images/figma/icon-angle.svg" alt="">Ângulos</li>
+              <li><img src="images/figma/icon-scissors.svg" alt="">Posição correta das mãos</li>
+              <li><img src="images/figma/icon-shears.svg" alt="">Posição da tesoura</li>
+              <li><img src="images/figma/icon-shrink.svg" alt="">Compensação do fator encolhimento</li>
+              <li><img src="images/figma/icon-hair.svg" alt="">Design de corte</li>
+            </ul>
+          </div>
           <a class="cta" href="#oferta">Quero dominar o Manual do Corte agora <img src="images/figma/arrow-circle.svg" alt=""></a>
         </div>
       </div>
