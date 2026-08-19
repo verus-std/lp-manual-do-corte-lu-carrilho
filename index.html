@@ -151,9 +151,12 @@
     .training h2{max-width:16ch;margin:0 auto 24px}
     .training-br{display:block}
     .training .copy{max-width:760px;margin:0 auto 70px}
-    .proof-strip{display:grid;grid-template-columns:repeat(5,minmax(260px,1fr));gap:22px;width:calc(100% + 260px);margin-left:-130px;overflow:hidden}
-    .proof-slot{height:510px;border-radius:20px;background:var(--pink-card);overflow:hidden}
+    .proof-strip{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+    .proof-track{display:flex;width:max-content;will-change:transform;animation:proof-marquee 92s linear infinite}
+    .proof-group{display:flex;flex:0 0 auto;gap:22px;padding-right:22px}
+    .proof-slot{flex:0 0 clamp(220px,19vw,280px);aspect-ratio:1000/1288;border-radius:20px;background:var(--pink-card);overflow:hidden;box-shadow:0 18px 38px rgba(4,3,30,.2)}
     .proof-slot img{width:100%;height:100%;object-fit:cover}
+    @keyframes proof-marquee{to{transform:translateX(-50%)}}
     .bonus-block{padding:120px 0 130px}
     .bonus-block h2{max-width:24ch;margin:0 auto 15px}
     .bonus-block>.container-sm>.copy{max-width:640px;margin:0 auto 45px;color:var(--lilac)}
@@ -239,7 +242,7 @@
       .problem-grid{width:min(calc(100% - (var(--gutter) * 2)),760px)}
       .intro-card{min-height:600px;padding:64px 7%}.intro-card-content{width:45%;max-width:400px}.photo-a{right:12%;width:40%}.photo-b{right:3%;width:27%}
       .cap-grid{grid-template-columns:repeat(2,1fr)}.cap-card,.cap-card:nth-child(4){grid-column:span 1}.cap-card:nth-child(5){grid-column:span 2}
-      .proof-strip{grid-template-columns:repeat(5,240px)}
+      .proof-slot{flex-basis:240px}
       .value-grid{width:min(calc(100% - (var(--gutter) * 2)),800px);margin:auto}
       .guarantee-grid{max-width:760px;text-align:center}.guarantee-seal{width:min(400px,75vw);margin:auto}.guarantee-copy h2,.guarantee-copy .copy{margin-left:auto;margin-right:auto}.mini-pills{justify-content:center}
     }
@@ -255,7 +258,7 @@
       .mission{padding-top:80px;padding-bottom:160px}.mission-br{display:none}.mission .mission-lead{font-size:17px}
       .intro-card{margin-top:-110px;padding:52px 30px 340px;min-height:680px;border-width:6px;border-radius:34px}.intro-card-content{width:100%;max-width:none}.photo-a{width:62%;height:300px;right:28%;top:auto;bottom:-3%}.photo-b{width:42%;height:250px;right:2%;bottom:-6%}
       .capabilities h2{margin-bottom:44px}.cap-grid{grid-template-columns:1fr}.cap-card,.cap-card:nth-child(4),.cap-card:nth-child(5){grid-column:span 1}
-      .proof-strip{grid-template-columns:repeat(5,190px);gap:14px;width:calc(100% + 100px);margin-left:-50px}.proof-slot{height:360px}
+      .proof-group{gap:14px;padding-right:14px}.proof-slot{flex-basis:min(72vw,240px)}
       .training-br{display:none}.bonus-grid{grid-template-columns:1fr}.result-card{grid-template-columns:1fr;padding:32px 26px}.result-card .cta{width:90%}
       .value{padding-top:90px}.principle{border-width:6px;border-radius:30px;padding:56px 26px}.principle .copy{text-align:left}.principle .goal{font-size:17px}
       .offer-dark{padding-top:150px}.recap{grid-template-columns:1fr}.price-box{padding:52px 24px}.price-total{flex-direction:column;align-items:center}.price-muted{font-size:14px}.price-main-label{font-size:22px}.perks{gap:7px}.cta-wide{font-size:10px}
@@ -271,7 +274,7 @@
       .intro-card{padding-bottom:300px}.photo-a{height:260px}.photo-b{height:210px}
       .result-card .cta{font-size:9px}.ledger li{font-size:13px}.cash{font-size:28px}
     }
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.cta::before{filter:blur(13px)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}.cta::before{filter:blur(13px)}.proof-strip{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scrollbar-width:none}.proof-track{animation:none}.proof-group[aria-hidden="true"]{display:none}}
   </style>
 </head>
 <body>
@@ -395,8 +398,37 @@
         <h2>Ao entrar para o<br class="training-br"> <strong>Manual do Corte,</strong></h2>
         <p class="copy">você terá <strong>acesso imediato</strong> ao método que ensina os fundamentos por trás de qualquer corte em cabelos crespos e cacheados. Você não vai aprender apenas a copiar cortes. Você vai entender o motivo de cada movimento. E é isso que faz uma especialista atender com confiança.</p>
       </div>
-      <div class="proof-strip reveal" aria-label="Espaço preparado para cinco imagens de resultados">
-        <div class="proof-slot"><!-- opcional: images/resultado-1.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-2.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-3.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-4.jpg --></div><div class="proof-slot"><!-- opcional: images/resultado-5.jpg --></div>
+      <div class="proof-strip reveal" aria-label="Módulos e bônus incluídos no Manual do Corte">
+        <div class="proof-track">
+          <div class="proof-group">
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/comece-aqui.webp" alt="Comece aqui" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-01.webp" alt="Módulo 1" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-02.webp" alt="Módulo 2" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-03.webp" alt="Módulo 3" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-04.webp" alt="Módulo 4" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-05.webp" alt="Módulo 5" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-06.webp" alt="Módulo 6" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-07.webp" alt="Módulo 7" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-08.webp" alt="Módulo 8" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-01.webp" alt="Bônus 1" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-02.webp" alt="Bônus 2" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-03.webp" alt="Bônus 3" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="proof-group" aria-hidden="true">
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/comece-aqui.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-01.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-02.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-03.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-04.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-05.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-06.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-07.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/modulo-08.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-01.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-02.webp" alt="" loading="lazy" decoding="async"></div>
+            <div class="proof-slot"><img src="images/modulos-carrossel/otimizadas/bonus-03.webp" alt="" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
       </div>
       <div class="bonus-block">
         <div class="container-sm">
